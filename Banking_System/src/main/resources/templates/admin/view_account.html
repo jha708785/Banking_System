@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="col-md-10 p-4 offset-md-1">
+			<div class="card">
+				<div class="card-body">
+					<div
+						class="container d-flex justify-content-center align-items-center">
+						<div style="width: 100px; height: 100px; border: 1px black solid;">
+							<img alt="" th:src="@{/img/pf.png}"
+								style="width: 100px; height: 100px">
+						</div>
+					</div>
+
+
+					<form action="">
+						<div class="form-group row mt-3">
+							<label for="colFormLabel"
+								class="col-sm-2 offset-sm-1 col-form-label col-form-label">Account</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.accountNum}"
+									readonly="readonly">
+							</div>
+
+							<label for="colFormLabel"
+								class="col-sm-2  col-form-label col-form-label">Balance</label>
+							<div class="col-sm-3">
+
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.accBal.totalBalance }" readonly="readonly">
+
+							</div>
+
+						</div>
+
+
+						<div class="form-group row mt-3">
+							<label for="colFormLabel"
+								class="col-sm-2 offset-sm-1 col-form-label col-form-label">First
+								Name</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel"
+									th:value="${user.firstName +' '+ user.lastName } "
+									readonly="readonly">
+							</div>
+
+							<label for="colFormLabel"
+								class="col-sm-2  col-form-label col-form-label">Username</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${ user.username}" readonly="readonly">
+							</div>
+
+						</div>
+
+
+						<div class="form-group row mt-3">
+							<label for="colFormLabel"
+								class="col-sm-2 offset-sm-1 col-form-label col-form-label">Email</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.email }" readonly="readonly">
+							</div>
+
+							<label for="colFormLabel"
+								class="col-sm-2  col-form-label col-form-label">Phone No</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.phno}" readonly="readonly">
+							</div>
+
+						</div>
+
+
+						<div class="form-group row mt-3">
+							<label for="colFormLabel"
+								class="col-sm-2 offset-sm-1 col-form-label col-form-label">Date
+								Of Birth</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.dob}" readonly="readonly">
+							</div>
+
+							<label for="colFormLabel"
+								class="col-sm-2  col-form-label col-form-label">Aadhar
+								No</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.adharNum}"
+									readonly="readonly">
+							</div>
+
+						</div>
+
+						<div class="form-group row mt-3">
+							<label for="colFormLabel"
+								class="col-sm-2 offset-sm-1 col-form-label col-form-label">Address</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.address}"
+									readonly="readonly">
+							</div>
+
+							<label for="colFormLabel"
+								class="col-sm-2  col-form-label col-form-label">City</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.city}" readonly="readonly">
+							</div>
+						</div>
+
+						<div class="form-group row mt-3">
+							<label for="colFormLabel"
+								class="col-sm-2 offset-sm-1 col-form-label col-form-label">State</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.state}" readonly="readonly">
+							</div>
+
+							<label for="colFormLabel"
+								class="col-sm-2  col-form-label col-form-label">Status</label>
+							<div class="col-sm-3">
+								<input type="email" class="form-control form-control"
+									id="colFormLabel" th:value="${user.accStatus}"
+									readonly="readonly">
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

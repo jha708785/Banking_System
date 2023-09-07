@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="col-md-10 offset-md-1">
+			<div class="card">
+				<div class="card-header bg-white">
+					<h3 class="text-center">Transaction</h3>
+					<th:block th:if="${session.msg}">
+						<h5 class="text-center fs-4 text-danger">[[${session.msg}]]</h5>
+						<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+					</th:block>
+					
+					<th:block th:if="${session.sucMsg}">
+						<h5 class="text-center fs-4 text-success">[[${session.sucMsg}]]</h5>
+						<th:block th:text="${#session.removeAttribute('sucMsg')}"></th:block>
+					</th:block>
+					
+				</div>
+				<div class="card-body">
+
+					<div class="col-md-5 offset-md-4 mt-5">
+						<form class="form-inline" action="searchAcct" method="post">
+							<div class="form-group mx-sm-3 mb-2">
+								<input type="text" class="form-control" required
+									placeholder="Enter Account No" name="accNum">
+							</div>
+							<button type="submit" class="btn btn-primary mb-2">Search</button>
+						</form>
+					</div>
+					<hr>
+
+
+					<th:block th:if="${st == 'no'}">
+						<form action="" method="post">
+
+							<div class="form-group row mt-3">
+								<label for="colFormLabel"
+									class="col-sm-2 offset-sm-1 col-form-label col-form-label">First
+									Name</label>
+								<div class="col-sm-3">
+									<input type="email" class="form-control form-control"
+										id="colFormLabel" value="" readonly="readonly">
+								</div>
+
+								<label for="colFormLabel"
+									class="col-sm-2  col-form-label col-form-label">Last
+									Name</label>
+								<div class="col-sm-3">
+									<input type="email" class="form-control form-control"
+										id="colFormLabel" value="" readonly="readonly">
+								</div>
+
+							</div>
+
+
+							<div class="form-group row mt-3">
+								<label for="colFormLabel"
+									class="col-sm-2 offset-sm-1 col-form-label col-form-label">Email</label>
+								<div class="col-sm-3">
+									<input type="email" class="form-control form-control"
+										id="colFormLabel" value="" readonly="readonly">
+								</div>
+
+								<label for="colFormLabel"
+									class="col-sm-2  col-form-label col-form-label">Phone
+									No</label>
+								<div class="col-sm-3">
+									<input type="email" class="form-control form-control"
+										id="colFormLabel" value="" readonly="readonly">
+								</div>
+
+							</div>
+
+
+							<div class="form-group row mt-3">
+								<label for="colFormLabel"
+									class="col-sm-2 offset-sm-1 col-form-label col-form-label">Transaction
+									Type</label>
+								<div class="col-sm-3">
+									<select class="form-control ">
+										<option>--Select--</option>
+										<option>Credit</option>
+										<option>Debit</option>
+									</select>
+								</div>
+
+								<label for="colFormLabel"
+									class="col-sm-2 col-form-label col-form-label">Amount</label>
+								<div class="col-sm-3">
+									<input type="number" class="form-control form-control"
+										id="colFormLabel">
+								</div>
+							</div>
+
+							<div class="form-group row mt-3">
+								<label for="colFormLabel"
+									class="col-sm-2 offset-sm-1 col-form-label col-form-label">Total
+									Amount</label>
+								<div class="col-sm-3">
+									<input type="email" class="form-control form-control"
+										id="colFormLabel" value="" readonly="readonly">
+								</div>
+							</div>
+
+							<div class="text-center">
+								<button class="btn btn-success">Submit</button>
+							</div>
+						</form>
+					</th:block>
+
+
+
+					<th:block th:if="${st == 'yes'}">
+						<form action="saveTrans" method="post">
+
+							<div class="form-group row mt-3">
+								<label for="colFormLabel"
+									class="col-sm-2 offset-sm-1 col-form-label col-form-label">Account
+									No</label>
+								<div class="col-sm-3">
+									<input name="accno" type="email"
+										class="form-control form-control"
+										th:value="${acct.accountNum}" readonly="readonly">
+								</div>
+
+								<label for="colFormLabel"
+									class="col-sm-2  col-form-label col-form-label">Full
+									Name</label>
+								<div class="col-sm-3">
+									<input type="email" class="form-control form-control"
+										id="colFormLabel"
+										th:value="${acct.firstName + ' '+acct.lastName  }"
+										readonly="readonly">
+								</div>
+							</div>
+
+
+							<div class="form-group row mt-3">
+								<label for="colFormLabel"
+									class="col-sm-2 offset-sm-1 col-form-label col-form-label">Email</label>
+								<div class="col-sm-3">
+									<input type="email" class="form-control form-control"
+										id="colFormLabel" th:value="${acct.email }"
+										readonly="readonly">
+								</div>
+
+								<label for="colFormLabel"
+									class="col-sm-2  col-form-label col-form-label">Phone
+									No</label>
+								<div class="col-sm-3">
+									<input type="email" class="form-control form-control"
+										id="colFormLabel" th:value="${acct.phno }" readonly="readonly">
+								</div>
+
+							</div>
+
+
+							<div class="form-group row mt-3">
+								<label for="colFormLabel"
+									class="col-sm-2 offset-sm-1 col-form-label col-form-label">Transaction
+									Type</label>
+								<div class="col-sm-3">
+									<select class="form-control" name="transType">
+										<option value="select">--Select--</option>
+										<option value="Credit">Credit</option>
+										<option value="Debit">Debit</option>
+									</select>
+								</div>
+
+								<label for="colFormLabel"
+									class="col-sm-2 col-form-label col-form-label">Amount</label>
+								<div class="col-sm-3">
+									<input type="number" class="form-control form-control"
+										name="amt" id="colFormLabel">
+								</div>
+							</div>
+							<input type="hidden" name="id" th:value="${acct.id}">
+
+							<div class="form-group row mt-3">
+								<label for="colFormLabel"
+									class="col-sm-2 offset-sm-1 col-form-label col-form-label">Total
+									Amount</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control form-control"
+										name="tbalance" th:value="${acct.accBal.totalBalance}"
+										readonly="readonly">
+								</div>
+							</div>
+
+
+
+							<div class="text-center">
+								<button class="btn btn-success">Submit</button>
+							</div>
+						</form>
+					</th:block>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

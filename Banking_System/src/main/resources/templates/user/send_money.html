@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid p-5">
+			<div class="row p-2">
+				<div class="col-md-6 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-body">
+							<form action="sendMoneyTrans" method="post">
+								<h4 class="text-center">Send Money</h4>
+								<th:block th:if="${session.msg}">
+									<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
+									<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+								</th:block>
+
+								<input type="hidden" value="${userobj.accountNo}" name="accno">
+								<input type="hidden"
+									value="${userobj.firstName} ${userobj.lastName}" name="uname">
+
+
+								<div class="form-group">
+									<label for="uname">Account Number:</label> <input type="number"
+										class="form-control" name="accNo" required>
+								</div>
+
+								<div class="form-group mt-3">
+									<label for="uname">Name:</label> <input type="text"
+										class="form-control" name="name" required>
+								</div>
+
+								<div class="form-group mt-3">
+									<label for="pwd">Amount:</label> <input type="number"
+										class="form-control" id="pwd" name="amt" required>
+								</div>
+
+								<div class="text-center mt-3">
+									<button type="submit" class="btn btn-primary col-md-12">Send</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(content)">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<title th:text="${title}"></title>
+<link rel="stylesheet" th:href="@{/css/admin.css}">
+
+<style type="text/css">
+.paint-card {
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.error {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<!-- Start Navabr  -->
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+		<a class="navbar-brand" href="#">Banking System</a>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto text-uppercase">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="#">About</a></li>
+
+
+
+				<li class="nav-item active"><a th:href="@{/logout}"
+					class="nav-link" href="#">Logout</a></li>
+			</ul>
+
+		</div>
+	</nav>
+
+	<!-- End Navabar -->
+
+
+	<!-- Side Bar  -->
+
+	<div class="sidebar mt-2">
+		<span class="crossBtn" onclick="toogleSidebar()">&times;</span> 
+		
+		<a
+			th:href="@{/admin/}" class="item"><i class="fas fa-home"></i>
+			Home</a> 
+			
+			
+			 
+			
+			<a th:href="@{/emp/account}"
+			class=""><i class="fa-solid fa-file-invoice"></i> Account</a> 
+			
+			
+			<a
+			th:href="@{/emp/trans}" class=""><i
+			class="fa-solid fa-bookmark"></i> Transaction</a> 
+			
+			<a
+			th:href="@{/emp/allTrans}" class=""><i class="fa-solid fa-list"></i>
+			All Transaction</a> 
+			
+			<a th:href="@{/emp/addCustomer}" class="item"><i
+			class="fas fa-user-circle"></i> Add Customer</a> 
+			
+			
+
+		<!--	<a href="#" class="item"><i
+			class="fas fa-cogs"></i> Setting</a>  -->
+
+
+		<a th:href="@{/logout}" class="item"><i
+			class="fas fa-sign-out-alt"></i> Logout</a>
+		<div class="divider"></div>
+	</div>
+
+	<!--  End Side Bar-->
+
+	<!-- Content -->
+	<div class="content mt-5">
+		<i class="fas fa-bars m-3" onclick="toogleSidebar()"></i>
+
+		<!-- Message Box -->
+
+
+
+		<div class="container" th:if="${session.message}">
+			<div th:classappend="${'alert-'+session.message.type}"
+				class="alert  text-center" role="alert">
+
+				<span th:text="${session.message.content}"></span>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+		</div>
+
+		<div th:replace="${content}"></div>
+	</div>
+	<!--content  -->
+
+
+	<!-- Optional JavaScript -->
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+	<script type="text/javascript" src="../js/script.js"></script>
+
+	<script>
+function deleteContact(cid)
+{
+	swal({
+		  title: "Are you sure?",
+		  text: " You want to delete this contact!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    
+			  window.location="/user/delete/"+cid;
+			  
+		    }
+		   else {
+		    swal("Your Contact is saved");
+		  }
+		});
+};
+	</script>
+
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+</body>
+</html>

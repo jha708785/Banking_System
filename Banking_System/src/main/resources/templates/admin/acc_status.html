@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+
+		<div class="col-md-12 ">
+
+
+
+			<div class="card">
+				<div class="card-body">
+					<div class="card-header text-center bg-white">
+						<h3>Account Status</h3>
+						<th:block th:if="${session.msg}">
+							<h4 class="text-center fs-4 text-success">[[${session.msg}]]</h4>
+							<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+						</th:block>
+
+					</div>
+					<table class="table ">
+						<thead class=" ">
+							<tr>
+								<th scope="col">SL No</th>
+								<th scope="col">Account No</th>
+								<th scope="col">Name</th>
+								<th scope="col">Email</th>
+								<th scope="col">Phone No</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="a,count :${accSt}">
+								<td>[[${count.count }]]</td>
+								<td><th:block th:if="${a.accountNum==null}">
+										<span class="text-danger">Account Not Approved</span>
+									</th:block> <th:block th:if="${a.accountNum!=null}">
+							    [[${a.accountNum}]]
+								</th:block></td>
+
+
+								<td>[[${a.firstName}]] [[${a.lastName}]]</td>
+								<td>[[${a.email}]]</td>
+								<td>[[${a.phno}]]</td>
+								<td><a th:href="@{'AcctSt/'+${a.id}+'/ap'}"
+									class="btn btn-sm btn-success">Approve</a> <a
+									th:href="@{'AcctSt/'+${a.id}+'/re'}"
+									class="btn btn-sm btn-danger">Reject</a></td>
+							</tr>
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+		</div>
+
+	</section>
+</body>
+</html>

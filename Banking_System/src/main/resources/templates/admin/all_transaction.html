@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="col-md-12 ">
+			<div class="card">
+				<div class="card-header text-center bg-white">
+					<h3>All Transaction</h3>
+				</div>
+				<div class="card-body">
+
+
+					<table class="table  mt-1">
+						<thead class="bg-primary text-light">
+							<tr>
+								<th scope="col">Account No</th>
+								<th scope="col">Credit / Debit</th>
+								<th scope="col">Transaction Details</th>
+								<th scope="col">Date</th>
+								<th scope="col">Time</th>
+								<th scope="col">Amount</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="trans,num:${trans}">
+								<td>[[${trans.user.accountNum}]]</td>
+								<td>[[${trans.transType}]]</td>
+
+
+								<td>[[${trans.transDtls}]]</td>
+								<td>[[${trans.date}]]</td>
+								<td>[[${trans.time}]]</td>
+								<td>[[${trans.balance}]]</td>
+
+							</tr>
+
+						</tbody>
+					</table>
+
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

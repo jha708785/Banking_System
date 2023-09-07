@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row p-5">
+				<div class="col-md-4 offset-md-4">
+					<div class="card">
+						<div class="card-body">
+							<div
+								class="container d-flex justify-content-center align-items-center">
+								<div
+									style="width: 100px; height: 100px; border: 1px black solid;">
+									<img alt="" src="../img/pf.png"
+										style="width: 100px; height: 100px">
+								</div>
+							</div>
+							
+							
+							<h5 class="mt-4">Name: [[${user.firstName}]] [[${user.lastName}]]</h5>
+							<h5>Account No: [[${user.accountNum}]]</h5>
+							<h5>
+								Total Balance: <i class="fa-solid fa-indian-rupee-sign"></i> [[${user.accBal.totalBalance}]]
+							</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

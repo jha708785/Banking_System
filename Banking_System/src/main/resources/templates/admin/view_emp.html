@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+
+		<div class="col-md-12 ">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-header text-center bg-white">
+						<h3>ALL EMP</h3>
+					</div>
+					<table class="table">
+						<thead class=" ">
+							<tr>
+								<th scope="col">SL No</th>
+								<th scope="col">Name</th>
+								<th scope="col">Email</th>
+								<th scope="col">username</th>
+								<th scope="col">Phone No</th>
+
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="a,count :${emp}">
+								<td>[[${count.count }]]</td>
+
+
+
+								<td>[[${a.firstName}]] [[${a.lastName}]]</td>
+								<td>[[${a.email}]]</td>
+								<td>[[${a.username}]]</td>
+								<td>[[${a.phno}]]</td>
+								<td><a th:href="@{'viewEmpDtls/'+${a.id}}"
+									class="btn btn-sm btn-success">View</a></td>
+							</tr>
+
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+		</div>
+
+	</section>
+</body>
+</html>
